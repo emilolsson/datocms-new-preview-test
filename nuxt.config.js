@@ -22,7 +22,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/datocms'],
+  plugins: [{src: '~/plugins/datocms'}, {src: '~/plugins/preview.client.js'}],
   /*
    ** Nuxt.js dev-modules
    */
