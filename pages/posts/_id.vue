@@ -20,7 +20,7 @@
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
-                  }}</nuxt-link>
+                  }} <span v-if="$route.query.preview">Span</span></nuxt-link>
                 </h1>
                 <datocms-structured-text
                   :data="post.content"
@@ -42,7 +42,10 @@ import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
 
 export default {
-  async asyncData({ params }) {
+data: () => ({
+
+}),
+  async asyncData({ params, route }) {
     const data = await request({
       query: gql`
         query BlogPostQuery($slug: String!) {
@@ -98,6 +101,7 @@ export default {
       variables: {
         slug: params.id,
       },
+      preview: route.query.preview,
     })
 
     return { ready: !!data, ...data }
