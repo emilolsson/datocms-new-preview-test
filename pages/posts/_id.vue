@@ -20,7 +20,7 @@
                 <h1 class="title">
                   <nuxt-link :to="`/posts/${post.slug}`">{{
                     post.title
-                  }} <span v-if="$route.query.preview">Span</span></nuxt-link>
+                  }} <span v-if="$route.query.preview">Span</span><span v-if="$nuxt.isPreview">Preview</span></nuxt-link>
                 </h1>
                 <datocms-structured-text
                   :data="post.content"
